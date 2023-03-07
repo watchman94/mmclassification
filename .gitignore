@@ -135,3 +135,8 @@ venv.bak/
 
 # embedding test
 embedding*.json
+train.sh
+test.sh
+get_embedding.sh
+get_similarity.sh
+inference.sh
