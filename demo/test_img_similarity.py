@@ -7,6 +7,7 @@ from argparse import ArgumentParser
 def main():
     parser = ArgumentParser()
     parser.add_argument('embedding_file', help='embedding_file')
+    parser.add_argument('--loc_threshold', type=int, default=5, help='loc_threshold')
     args = parser.parse_args()
 
     with open(args.embedding_file, 'r') as openfile:
@@ -18,7 +19,7 @@ def main():
     correct, error = 0, 0
 
     out = open('error_list.log', 'w')
-    loc_threshold = 5
+    loc_threshold = args.loc_threshold
 
     for file in list(embedding_dict.keys()):
         pic_name = os.fsdecode(file)

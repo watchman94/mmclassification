@@ -132,3 +132,6 @@ venv.bak/
 *.pvti-journal
 /cache_engine
 /report
+
+# embedding test
+embedding*.json
