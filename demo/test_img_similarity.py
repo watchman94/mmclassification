@@ -8,6 +8,7 @@ def main():
     parser = ArgumentParser()
     parser.add_argument('embedding_file', help='embedding_file')
     parser.add_argument('--loc_threshold', type=int, default=5, help='loc_threshold')
+    parser.add_argument('--loc_threshold1', type=int, default=2, help='loc_threshold1')
     args = parser.parse_args()
 
     with open(args.embedding_file, 'r') as openfile:
@@ -45,8 +46,9 @@ def main():
         d_view.sort(reverse=True)
         for v, k in d_view:
             kl = k.split("_")
-            #pic_name_l = pic_name.split("_")
-            if kl[-1] == pic_name_l[-1] and kl[-3] == pic_name_l[-3]:
+            loc1 = int(kl[-3][:-1])
+            loc2 = int(pic_name_l[-3][:-1])
+            if abs(loc1 - loc2) <= args.loc_threshold1 and kl[-1] == pic_name_l[-1]:
                 correct += 1
             else:
                 error += 1

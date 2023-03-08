@@ -96,6 +96,9 @@ def init_model_new(config, model_name, checkpoint=None, device='cuda:0', options
     elif model_name == "efficientnet_b0":
         extraction_layer = model.neck.gap
         shape = (1, 1280, 1, 1)
+    elif model_name == "efficientnet_b3":
+        extraction_layer = model.neck.gap
+        shape = (1, 1536, 1, 1)
     else:
         raise KeyError('Model %s was not found' % model_name)
 
